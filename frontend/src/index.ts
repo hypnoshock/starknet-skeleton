@@ -46,7 +46,13 @@ class Main {
         this._ctx = this._canvas.getContext('2d');
 
         if (this._network == 'goerli') {
-            this._providerL1 = getDefaultProvider('https://eth-goerli.alchemyapi.io/v2/gfv1hsbP0Uke9A5Gf_K0OeDzSQmy_9Eq') 
+            const endpointL1 = process.env['GOERLI_ENDPOINT'];
+            if (!endpointL1) {
+                throw("No goerli endpoint specified! Please set GOERLI_ENDPOINT env var");
+            }
+            this._providerL1 = getDefaultProvider(endpointL1);
+            console.log(`Using Goerli endpoint: ${endpointL1}`);
+
             this._providerL2 = new Provider({ baseUrl: 'https://alpha4.starknet.io'});
         } else {
             this._providerL1 = getDefaultProvider('http://127.0.0.1:8545');

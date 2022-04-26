@@ -24,7 +24,9 @@ module.exports = {
       ],
     }),
     new webpack.EnvironmentPlugin([
-      'HARDHAT_NETWORK'
+      'HARDHAT_NETWORK',
+      'GOERLI_ENDPOINT',
+      'ACCOUNT_MNEMONIC',
     ])
   ],
   resolve: {
