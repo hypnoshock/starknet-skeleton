@@ -24,9 +24,9 @@ services:
     environment:
       MINER_BLOCKTIME: "0"
       NODE_OPTIONS: "--openssl-legacy-provider"
-      HARDHAT_NETWORK: "goerli"
-      ACCOUNT_MNEMONIC: ""
-      GOERLI_ENDPOINT: ""
+      HARDHAT_NETWORK: ${HARDHAT_NETWORK}
+      ACCOUNT_MNEMONIC: ${ACCOUNT_MNEMONIC}
+      GOERLI_ENDPOINT: ${GOERLI_ENDPOINT}
     ports:
       - 8545:8545
     depends_on:
@@ -43,10 +43,9 @@ services:
     build:
       context: ./frontend
     environment:
-      # Set to either goerli or ganache
-      HARDHAT_NETWORK: "goerli"
-      ACCOUNT_MNEMONIC: ""
-      GOERLI_ENDPOINT: ""
+      HARDHAT_NETWORK: ${HARDHAT_NETWORK}
+      ACCOUNT_MNEMONIC: ${ACCOUNT_MNEMONIC}
+      GOERLI_ENDPOINT: ${GOERLI_ENDPOINT}
     ports:
       - 9000:9000
     volumes:
