@@ -8,9 +8,9 @@ Create a .env file in the root of the project folder with the following environm
     GOERLI_ENDPOINT=""
     ACCOUNT_MNEMONIC=""
 
-`HARDHAT_NETWORK` can be either `goerli` for testing online or `ganache` for testing locally
-`GOERLI_ENDPOINT` can be any Goerli endpoint i.e one created in Infura or Alchemy
-`ACCOUNT_MNEMONIC` this mnemonic is both used for the Ganache account generation and for the account used with Goerli
+`HARDHAT_NETWORK` can be either `goerli` for testing online or `ganache` for testing locally\
+`GOERLI_ENDPOINT` can be any Goerli endpoint i.e one created in Infura or Alchemy\
+`ACCOUNT_MNEMONIC` this mnemonic is both used for the Ganache account generation and for the account used with Goerli\
 
 Start the docker container by running
     docker-compose up
