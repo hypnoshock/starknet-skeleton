@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  starknetdevnet:
+    restart: always
+    build:
+      context: ./starknet/devnet
+    healthcheck:
+      test: netstat -tulpn | grep :5000 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 1s
+    ports:
+      - 5001:5000
+    volumes:
+      - ./blockchain/deployments:/deployments
+
+  hardhat:
+    restart: always
+    build:
+      context: ./blockchain
+    environment:
+      MINER_BLOCKTIME: "0"
+      NODE_OPTIONS: "--openssl-legacy-provider"
+      HARDHAT_NETWORK: "goerli"
+      ACCOUNT_MNEMONIC: ""
+      GOERLI_ENDPOINT: ""
+    ports:
+      - 8545:8545
+    depends_on:
+      starknetdevnet:
+        condition: service_healthy
+    volumes:
+      - ./blockchain/deployments:/starknet-deploy/deployments
+      - ./blockchain/contracts:/starknet-deploy/contracts
+      - ./blockchain/artifacts:/starknet-deploy/artifacts
+      - ./blockchain/lib:/starknet-deploy/lib
+      - ./blockchain/hhEnv:/starknet-deploy/hhEnv
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      # Set to either goerli or ganache
+      HARDHAT_NETWORK: "goerli"
+      ACCOUNT_MNEMONIC: ""
+      GOERLI_ENDPOINT: ""
+    ports:
+      - 9000:9000
+    volumes:
+      - ./blockchain/deployments:/blockchain/deployments
+      - ./blockchain/artifacts:/blockchain/artifacts
+      - ./frontend:/frontend
+
+# volumes:
+#   starknet-deployments:

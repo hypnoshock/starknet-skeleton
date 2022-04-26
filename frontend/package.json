@@ -1,0 +1,31 @@
+{
+  "name": "basic-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "dev": "webpack-dev-server --host 0.0.0.0 --mode development",
+    "build:contracts": "typechain --target ethers-v5 --out-dir ./src/services/contracts ../blockchain/artifacts/contracts/solidity/SimpleContract.sol/SimpleContract.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typechain/ethers-v5": "^10.0.0",
+    "buffer": "^6.0.3",
+    "copy-webpack-plugin": "^10.2.4",
+    "ts-loader": "^9.2.8",
+    "typechain": "^8.0.0",
+    "typescript": "^4.6.3",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "dependencies": {
+    "ethers": "^5.6.4",
+    "starknet": "^3.9.0"
+  }
+}

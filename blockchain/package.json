@@ -1,0 +1,29 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy:local": "env HARDHAT_NETWORK=ganache node ./scripts/deploy.js",
+    "deploy:testnet": "env HARDHAT_NETWORK=goerli node ./scripts/deploy.js",
+    "console:local": "hardhat console --network ganache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-etherscan": "^3.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "@openzeppelin/contracts-upgradeable": "^4.5.2",
+    "@shardlabs/starknet-hardhat-plugin": "^0.5.3",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.4",
+    "ganache": "^7.0.5",
+    "hardhat": "^2.8.4"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.5.0"
+  }
+}

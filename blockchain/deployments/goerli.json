@@ -1,0 +1,154 @@
+{
+    "contracts": {
+        "simpleContractL1": {
+            "contract": "contracts/solidity/SimpleContract.sol:SimpleContract",
+            "address": "0x86C340b20E02696111e92Dd562d42FfE16818089",
+            "bytecodeHash": "fb5069ea98f7d079ea66f2eef0bd05b8ca1598cd0c0c31d6b55552d2b3b494be",
+            "buildInfo": "d040d18e322541153c81c20f9dad0f75"
+        },
+        "simpleContractL2": {
+            "contract": "contracts/cairo/SimpleContract.cairo",
+            "address": "0x032f353568d31e585f4fab320e19635478e1f484456ba65dabcc590e4f21dacd",
+            "bytecodeHash": "41da65af810b3c92903eb5ebbadba2f68f6d8445fe86e02c2613e8bf809e3ea1",
+            "buildInfo": "41da65af810b3c92903eb5ebbadba2f6"
+        }
+    },
+    "artifacts": {
+        "d040d18e322541153c81c20f9dad0f75": {
+            "id": "d040d18e322541153c81c20f9dad0f75",
+            "_format": "hh-sol-build-info-1",
+            "solcVersion": "0.8.4",
+            "solcLongVersion": "0.8.4+commit.c7e474f2",
+            "input": {
+                "language": "Solidity",
+                "sources": {
+                    "contracts/solidity/SimpleContract.sol": {
+                        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\n\ncontract SimpleContract\n{\n    uint256 public a;\n    uint256 public b;\n\n    function setA(uint256 val) public\n    {\n        a = val;\n    }\n\n    function setB(uint256 val) public\n    {\n        b = val;\n    }\n}\n"
+                    },
+                    "@openzeppelin/contracts/access/Ownable.sol": {
+                        "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts v4.4.1 (access/Ownable.sol)\n\npragma solidity ^0.8.0;\n\nimport \"../utils/Context.sol\";\n\n/**\n * @dev Contract module which provides a basic access control mechanism, where\n * there is an account (an owner) that can be granted exclusive access to\n * specific functions.\n *\n * By default, the owner account will be the one that deploys the contract. This\n * can later be changed with {transferOwnership}.\n *\n * This module is used through inheritance. It will make available the modifier\n * `onlyOwner`, which can be applied to your functions to restrict their use to\n * the owner.\n */\nabstract contract Ownable is Context {\n    address private _owner;\n\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n    /**\n     * @dev Initializes the contract setting the deployer as the initial owner.\n     */\n    constructor() {\n        _transferOwnership(_msgSender());\n    }\n\n    /**\n     * @dev Returns the address of the current owner.\n     */\n    function owner() public view virtual returns (address) {\n        return _owner;\n    }\n\n    /**\n     * @dev Throws if called by any account other than the owner.\n     */\n    modifier onlyOwner() {\n        require(owner() == _msgSender(), \"Ownable: caller is not the owner\");\n        _;\n    }\n\n    /**\n     * @dev Leaves the contract without owner. It will not be possible to call\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\n     *\n     * NOTE: Renouncing ownership will leave the contract without an owner,\n     * thereby removing any functionality that is only available to the owner.\n     */\n    function renounceOwnership() public virtual onlyOwner {\n        _transferOwnership(address(0));\n    }\n\n    /**\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\n     * Can only be called by the current owner.\n     */\n    function transferOwnership(address newOwner) public virtual onlyOwner {\n        require(newOwner != address(0), \"Ownable: new owner is the zero address\");\n        _transferOwnership(newOwner);\n    }\n\n    /**\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\n     * Internal function without access restriction.\n     */\n    function _transferOwnership(address newOwner) internal virtual {\n        address oldOwner = _owner;\n        _owner = newOwner;\n        emit OwnershipTransferred(oldOwner, newOwner);\n    }\n}\n"
+                    },
+                    "@openzeppelin/contracts/utils/Context.sol": {
+                        "content": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\nabstract contract Context {\n    function _msgSender() internal view virtual returns (address) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes calldata) {\n        return msg.data;\n    }\n}\n"
+                    }
+                },
+                "settings": {
+                    "optimizer": {
+                        "enabled": true,
+                        "runs": 200
+                    },
+                    "outputSelection": {
+                        "*": {
+                            "*": [
+                                "abi",
+                                "evm.bytecode",
+                                "evm.deployedBytecode",
+                                "evm.methodIdentifiers",
+                                "metadata"
+                            ],
+                            "": [
+                                "ast"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "41da65af810b3c92903eb5ebbadba2f6": [
+            {
+                "inputs": [],
+                "name": "get_a",
+                "outputs": [
+                    {
+                        "name": "res",
+                        "type": "felt"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "name": "val",
+                        "type": "felt"
+                    }
+                ],
+                "name": "set_a",
+                "outputs": [],
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "get_b",
+                "outputs": [
+                    {
+                        "name": "res",
+                        "type": "felt"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "name": "val",
+                        "type": "felt"
+                    }
+                ],
+                "name": "set_b",
+                "outputs": [],
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "get_both",
+                "outputs": [
+                    {
+                        "name": "res_a",
+                        "type": "felt"
+                    },
+                    {
+                        "name": "res_b",
+                        "type": "felt"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "name": "val_a",
+                        "type": "felt"
+                    },
+                    {
+                        "name": "val_b",
+                        "type": "felt"
+                    }
+                ],
+                "name": "set_both",
+                "outputs": [],
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "reset_both",
+                "outputs": [],
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "inc_a",
+                "outputs": [
+                    {
+                        "name": "res",
+                        "type": "felt"
+                    }
+                ],
+                "type": "function"
+            }
+        ]
+    }
+}

@@ -1,0 +1,1 @@
+docker exec -it starknet-perlin_starknetdeploy_1 /bin/bash

@@ -1,0 +1,6 @@
+env
+node_modules
+cache
+artifacts
+starknet-artifacts
+deployments/ganache.json
