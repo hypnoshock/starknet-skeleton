@@ -1,3 +1,0 @@
-The server will deploy when it is started via docker compose. 
-It has a mapping to the contract/cairo folder and will write the deployment ganache.json file to a volume
-To redeploy a contract after it's been updated, restart the server.

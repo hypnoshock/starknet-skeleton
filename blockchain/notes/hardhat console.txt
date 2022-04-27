@@ -1,5 +1,0 @@
-You can interact directly with the Starknet contracts by connecting a terminal to the running docker container and running:
-npm run console:local
-
-in the hardhat terminal type:
-.load hhEnv/env.js

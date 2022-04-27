@@ -1,2 +1,0 @@
-Fast integer lerp
-(A*(1024-F) + B * F) >> 10

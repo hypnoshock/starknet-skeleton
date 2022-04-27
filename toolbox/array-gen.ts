@@ -1,18 +1,4 @@
-// func get_byte_array(idx : felt) -> (byte_array : felt):
-//     let (l) = get_label_location(byte_array)
-//     let arr = cast(l, felt*)
-//     return (arr[idx])
-
-//     byte_array:
-//     dw 0
-//     dw 128
-//     dw 255
-//     dw 128
-// end
-
-
 import {readFileSync, writeFileSync} from 'fs';
-import { number } from 'starknet';
 
 const TAB = '    ';
 

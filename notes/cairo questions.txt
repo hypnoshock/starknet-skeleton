@@ -1,8 +1,0 @@
-Q: When do I need syscall_ptr
-A: The read() method on @storage_var needs it
-
-Q: Not understanding why the compiler died when I didn't use locals
-gaetbout — Today at 10:07 PM
-have a look there: https://www.cairo-lang.org/docs/how_cairo_works/object_allocation.html
-Maybe it'll answer your question 🙂
-https://www.cairo-lang.org/docs/reference/common_library.html?highlight=alloc%20local

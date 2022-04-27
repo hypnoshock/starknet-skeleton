@@ -4,8 +4,8 @@ import { Contract, Provider } from "starknet";
 import { SimpleContract, SimpleContract__factory } from "./services/contracts";
 
 const FP = 10 ** 2
-const SET_L1_VAL = false;
-const SET_L2_VAL = false;
+const SET_L1_VAL = true;
+const SET_L2_VAL = true;
 
 class Main {
 
@@ -50,13 +50,20 @@ class Main {
             if (!endpointL1) {
                 throw("No goerli endpoint specified! Please set GOERLI_ENDPOINT env var");
             }
-            this._providerL1 = getDefaultProvider(endpointL1);
-            console.log(`Using Goerli endpoint: ${endpointL1}`);
+            const endpointL2 = 'https://alpha4.starknet.io';
 
-            this._providerL2 = new Provider({ baseUrl: 'https://alpha4.starknet.io'});
+            this._providerL1 = getDefaultProvider(endpointL1);
+            this._providerL2 = new Provider({ baseUrl: endpointL2});
+            
+            console.log(`Using Goerli L1: ${endpointL1} L2:${endpointL2}`);
         } else {
-            this._providerL1 = getDefaultProvider('http://127.0.0.1:8545');
-            this._providerL2 = new Provider({ baseUrl: 'http://127.0.0.1:5001'});
+            const endpointL1 = 'http://127.0.0.1:8545';
+            const endpointL2 = 'http://127.0.0.1:5001';
+
+            this._providerL1 = getDefaultProvider(endpointL1);
+            this._providerL2 = new Provider({ baseUrl: endpointL2});
+
+            console.log(`Using local endpoints L1: ${endpointL1} L2: ${endpointL2}`)
         }
 
         this.init();
